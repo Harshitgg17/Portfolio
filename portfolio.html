@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshit Gupta | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        darkBg: '#090d16',
+                        cardBg: 'rgba(15, 23, 42, 0.75)',
+                        neonCyan: '#06b6d4',
+                        neonPurple: '#a855f7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #090d16;
+            color: #f8fafc;
+            overflow-x: hidden;
+            cursor: default;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .text-glow {
+            text-shadow: 0 0 25px rgba(6, 182, 212, 0.6);
+        }
+        /* Custom Glowing Cursor */
+        #cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(168, 85, 247, 0.08) 40%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 99;
+            transition: width 0.3s, height 0.3s;
+        }
+        /* Scroll Reveal Utility Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 3D Card Tilt Wrapper */
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased relative selection:bg-cyan-500 selection:text-white">
+
+    <!-- Interactive Glowing Cursor -->
+    <div id="cursor-glow"></div>
+
+    <!-- Interactive 3D Math & Graph Canvas Background -->
+    <canvas id="mathCanvas"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition transform">
+                HG<span class="text-cyan-400">.</span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-cyan-400 transition hover:-translate-y-0.5">About</a>
+                <a href="#education" class="hover:text-cyan-400 transition hover:-translate-y-0.5">Education</a>
+                <a href="#strengths" class="hover:text-cyan-400 transition hover:-translate-y-0.5">Strengths</a>
+                <a href="#projects" class="hover:text-cyan-400 transition hover:-translate-y-0.5">Projects</a>
+                <a href="#contact" class="hover:text-cyan-400 transition hover:-translate-y-0.5">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://github.com/Harshitgg17" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-cyan-400 hover:border-cyan-400 hover:scale-110 transition duration-300">
+                    <i class="fab fa-github text-lg"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-cyan-400 hover:border-cyan-400 hover:scale-110 transition duration-300">
+                    <i class="fab fa-linkedin-in text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center relative pt-20 px-6">
+        <div class="max-w-4xl mx-auto text-center z-10 reveal active">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-cyan-400 text-xs sm:text-sm mb-6 border border-cyan-500/30 shadow-lg shadow-cyan-500/10 animate-bounce">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                B.Tech CSE Student @ South Asian University, New Delhi
+            </div>
+            <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Hi, I'm <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent text-glow">Harshit Gupta</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                A passionate computer science innovator blending rigorous mathematical problem-solving with cutting-edge software development.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-semibold shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105 active:scale-95 transition duration-300 text-center">
+                    Explore Projects
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card font-semibold hover:border-cyan-400 hover:text-cyan-400 hover:scale-105 active:scale-95 transition duration-300 text-center">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Education Section -->
+    <section id="education" class="py-24 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Academic Journey</h2>
+                <p class="text-slate-400 max-w-xl mx-auto">My educational milestones shaping my technical foundation.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- University -->
+                <div class="tilt-card glass-card p-8 rounded-2xl relative overflow-hidden group hover:border-cyan-400/50 hover:shadow-cyan-500/20 reveal">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/30 transition duration-500"></div>
+                    <div class="text-cyan-400 font-mono text-sm mb-2">2026 – 2030</div>
+                    <h3 class="text-xl font-bold mb-2">B.Tech in Computer Science & Engineering</h3>
+                    <p class="text-slate-300 font-medium mb-4">South Asian University, New Delhi</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">Focusing on core algorithms, software architecture, and modern problem-solving methodologies.</p>
+                </div>
+                <!-- High School -->
+                <div class="tilt-card glass-card p-8 rounded-2xl relative overflow-hidden group hover:border-purple-400/50 hover:shadow-purple-500/20 reveal" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/30 transition duration-500"></div>
+                    <div class="text-purple-400 font-mono text-sm mb-2">Passed in 2025</div>
+                    <h3 class="text-xl font-bold mb-2">High School (12th Grade)</h3>
+                    <p class="text-slate-300 font-medium mb-4">Percentage: 79%</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">Built strong analytical fundamentals in mathematics, physics, and computer science.</p>
+                </div>
+                <!-- 10th Grade -->
+                <div class="tilt-card glass-card p-8 rounded-2xl relative overflow-hidden group hover:border-indigo-400/50 hover:shadow-indigo-500/20 reveal" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/30 transition duration-500"></div>
+                    <div class="text-indigo-400 font-mono text-sm mb-2">Passed in 2023</div>
+                    <h3 class="text-xl font-bold mb-2">Secondary School (10th Grade)</h3>
+                    <p class="text-slate-300 font-medium mb-4">Percentage: 90%</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">Achieved academic excellence with distinction in core science and math modules.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strengths Section -->
+    <section id="strengths" class="py-24 px-6 relative bg-slate-900/40">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Core Strengths</h2>
+                <p class="text-slate-400 max-w-xl mx-auto">What drives my passion and defines my professional work ethic.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="tilt-card glass-card p-6 rounded-2xl hover:border-cyan-400/50 hover:shadow-cyan-500/20 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4 text-xl group-hover:rotate-12 transition transform">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Passionate</h3>
+                    <p class="text-slate-400 text-sm">Deeply enthusiastic about coding, math-driven algorithms, and creating seamless digital tools.</p>
+                </div>
+                <div class="tilt-card glass-card p-6 rounded-2xl hover:border-purple-400/50 hover:shadow-purple-500/20 reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4 text-xl group-hover:rotate-12 transition transform">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Analytical Thinker</h3>
+                    <p class="text-slate-400 text-sm">Strong mathematical aptitude allowing me to break down complex logical challenges efficiently.</p>
+                </div>
+                <div class="tilt-card glass-card p-6 rounded-2xl hover:border-indigo-400/50 hover:shadow-indigo-500/20 reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4 text-xl group-hover:rotate-12 transition transform">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Innovative Creator</h3>
+                    <p class="text-slate-400 text-sm">Constantly brainstorming new ideas and translating concepts into working web applications like Doubthut.</p>
+                </div>
+                <div class="tilt-card glass-card p-6 rounded-2xl hover:border-pink-400/50 hover:shadow-pink-500/20 reveal" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-400 mb-4 text-xl group-hover:rotate-12 transition transform">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Quick Learner</h3>
+                    <p class="text-slate-400 text-sm">Eager to adopt emerging technologies, frameworks, and tools rapidly to stay ahead.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Featured Project</h2>
+                <p class="text-slate-400 max-w-xl mx-auto">Showcasing my technical execution and problem-solving capability.</p>
+            </div>
+            <div class="max-w-3xl mx-auto reveal">
+                <div class="tilt-card glass-card p-8 sm:p-10 rounded-3xl border border-cyan-500/30 hover:border-cyan-400 transition duration-500 relative group shadow-2xl shadow-cyan-500/10">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-mono">Web Application</span>
+                            <div class="flex gap-3">
+                                <a href="https://github.com/Harshitgg17" target="_blank" class="text-slate-400 hover:text-cyan-400 transition text-lg hover:scale-125 transform"><i class="fab fa-github"></i></a>
+                                <a href="https://doubthut.infinityfree.io/?i=1" target="_blank" class="text-slate-400 hover:text-cyan-400 transition text-lg hover:scale-125 transform"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-4 group-hover:text-cyan-300 transition">Doubthut</h3>
+                        <p class="text-slate-300 leading-relaxed mb-6 font-light">
+                            An interactive platform designed to solve queries seamlessly, foster peer-to-peer knowledge sharing, and streamline academic collaboration with responsive layouts and robust functionality.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-3 py-1 rounded-lg bg-slate-800/80 text-slate-300 text-xs font-mono hover:bg-cyan-500/20 transition">HTML5 / CSS3</span>
+                            <span class="px-3 py-1 rounded-lg bg-slate-800/80 text-slate-300 text-xs font-mono hover:bg-cyan-500/20 transition">JavaScript</span>
+                            <span class="px-3 py-1 rounded-lg bg-slate-800/80 text-slate-300 text-xs font-mono hover:bg-cyan-500/20 transition">Web Architecture</span>
+                        </div>
+                        <a href="https://doubthut.infinityfree.io/?i=1" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-cyan-500/20 text-cyan-400 font-semibold hover:bg-cyan-500 hover:text-white transition duration-300 group-hover:shadow-lg group-hover:shadow-cyan-500/30">
+                            <span>Visit Doubthut Live</span>
+                            <i class="fas fa-arrow-right text-sm transform group-hover:translate-x-1 transition"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 relative bg-slate-900/40">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Let's Connect</h2>
+            <p class="text-slate-400 mb-10 max-w-lg mx-auto">Have an exciting project idea, collaboration, or opportunity? Feel free to reach out!</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="https://github.com/Harshitgg17" target="_blank" class="glass-card px-6 py-4 rounded-2xl flex items-center gap-3 hover:border-cyan-400 hover:text-cyan-400 hover:scale-105 transition duration-300">
+                    <i class="fab fa-github text-xl"></i>
+                    <span class="font-medium">GitHub / Harshitgg17</span>
+                </a>
+                <a href="mailto:contact@harshitgupta.dev" class="glass-card px-6 py-4 rounded-2xl flex items-center gap-3 hover:border-cyan-400 hover:text-cyan-400 hover:scale-105 transition duration-300">
+                    <i class="fas fa-envelope text-xl"></i>
+                    <span class="font-medium">Email Me</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/10 text-center text-slate-500 text-sm">
+        <p>© 2026 Harshit Gupta. Crafted with advanced animations & mathematical elegance.</p>
+    </footer>
+
+    <!-- JavaScript for Animations, Canvas, and Physics Effects -->
+    <script>
+        // 1. Smooth Glowing Cursor Follower
+        const cursorGlow = document.getElementById('cursor-glow');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let cursorX = mouseX;
+        let cursorY = mouseY;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursorGlow.style.left = `${cursorX}px`;
+            cursorGlow.style.top = `${cursorY}px`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // 2. Scroll Reveal Observer
+        const observerOptions = {
+            threshold: 0.15
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 3. 3D Tilt Effect on Cards
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const dx = (x - xc) / xc;
+                const dy = (y - yc) / yc;
+
+                card.style.transform = `rotateY(${dx * 8}deg) rotateX(${-dy * 8}deg) translateY(-5px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateY(0deg) rotateX(0deg) translateY(0px)';
+            });
+        });
+
+        // 4. Interactive 3D Math Symbols & Multi-Layer Wave Canvas
+        const canvas = document.getElementById('mathCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        const mathSymbols = ['ε', 'δ', '∫', '∑', 'π', 'θ', '∇', '∂', '√', '∞', 'f(x)', 'lim'];
+        const particles = [];
+
+        for (let i = 0; i < 30; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                symbol: mathSymbols[Math.floor(Math.random() * mathSymbols.length)],
+                size: Math.random() * 18 + 12,
+                speedX: (Math.random() - 0.5) * 0.8,
+                speedY: (Math.random() - 0.5) * 0.8,
+                opacity: Math.random() * 0.5 + 0.15,
+                angle: Math.random() * Math.PI * 2,
+                spin: (Math.random() - 0.5) * 0.03
+            });
+        }
+
+        let waveOffset = 0;
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw Layer 1 Curvy Graph (Sine Wave)
+            ctx.save();
+            ctx.beginPath();
+            ctx.lineWidth = 2.5;
+            ctx.strokeStyle = 'rgba(6, 182, 212, 0.2)';
+            for (let x = 0; x < width; x += 8) {
+                let y = height * 0.5 + Math.sin((x + waveOffset) * 0.007) * 90 + Math.cos((x + waveOffset * 0.5) * 0.004) * 50;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Draw Layer 2 Curvy Graph (Cosine Wave for Depth)
+            ctx.beginPath();
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = 'rgba(168, 85, 247, 0.15)';
+            for (let x = 0; x < width; x += 8) {
+                let y = height * 0.55 + Math.cos((x - waveOffset * 0.8) * 0.006) * 110;
+                if (x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            ctx.restore();
+
+            waveOffset += 2;
+
+            // Update and draw floating 3D mathematical symbols with repulsion & glow
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                p.angle += p.spin;
+
+                // Parallax cursor interaction
+                let dx = mouseX - p.x;
+                let dy = mouseY - p.y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 220) {
+                    p.x -= dx * 0.015;
+                    p.y -= dy * 0.015;
+                }
+
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.angle);
+                ctx.font = `${p.size}px 'Fira Code', monospace`;
+                ctx.fillStyle = `rgba(6, 182, 212, ${p.opacity})`;
+                ctx.shadowColor = 'rgba(6, 182, 212, 0.7)';
+                ctx.shadowBlur = 12;
+                ctx.fillText(p.symbol, 0, 0);
+                ctx.restore();
+            });
+
+            requestAnimationFrame(animateCanvas);
+        }
+
+        animateCanvas();
+    </script>
+</body>
+</html>
