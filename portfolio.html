@@ -98,9 +98,10 @@
             <a href="#" class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition transform">
                 HG<span class="text-cyan-400">.</span>
             </a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-300">
                 <a href="#about" class="hover:text-cyan-400 transition hover:-translate-y-0.5">About</a>
                 <a href="#education" class="hover:text-cyan-400 transition hover:-translate-y-0.5">Education</a>
+                <a href="#internships" class="hover:text-cyan-400 transition hover:-translate-y-0.5">Internships</a>
                 <a href="#strengths" class="hover:text-cyan-400 transition hover:-translate-y-0.5">Strengths</a>
                 <a href="#projects" class="hover:text-cyan-400 transition hover:-translate-y-0.5">Projects</a>
                 <a href="#contact" class="hover:text-cyan-400 transition hover:-translate-y-0.5">Contact</a>
@@ -176,8 +177,41 @@
         </div>
     </section>
 
+    <!-- Internship Section -->
+    <section id="internships" class="py-24 px-6 relative bg-slate-900/40">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Internship Experience</h2>
+                <p class="text-slate-400 max-w-xl mx-auto">Gaining hands-on industry exposure and building real-world solutions.</p>
+            </div>
+            <div class="space-y-6">
+                <!-- Internship Card 1 -->
+                <div class="tilt-card glass-card p-8 rounded-3xl border border-cyan-500/30 hover:border-cyan-400 transition duration-500 relative group reveal">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 relative z-10">
+                        <div>
+                            <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-mono inline-block mb-2">Software Engineering Intern</span>
+                            <h3 class="text-2xl font-bold">Tech / Startup Company Name</h3>
+                        </div>
+                        <span class="text-cyan-400 font-mono text-sm px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/25 w-fit">2026 – Present</span>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed mb-6 font-light relative z-10">
+                        Working on full-stack web applications, optimizing backend architectures, and collaborating with senior engineers to implement scalable features and responsive UI modules.
+                    </p>
+                    <div class="flex flex-wrap gap-2 relative z-10">
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/80 text-slate-300 text-xs font-mono">JavaScript / TypeScript</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/80 text-slate-300 text-xs font-mono">Web Architecture</span>
+                        <span class="px-3 py-1 rounded-lg bg-slate-800/80 text-slate-300 text-xs font-mono">API Integration</span>
+                    </div>
+                </div>
+
+                <!-- Note: You can duplicate the block above to add more internship roles as you gain them! -->
+            </div>
+        </div>
+    </section>
+
     <!-- Strengths Section -->
-    <section id="strengths" class="py-24 px-6 relative bg-slate-900/40">
+    <section id="strengths" class="py-24 px-6 relative">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-4">Core Strengths</h2>
@@ -217,7 +251,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 px-6 relative">
+    <section id="projects" class="py-24 px-6 relative bg-slate-900/40">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-4">Featured Project</h2>
@@ -254,7 +288,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 relative bg-slate-900/40">
+    <section id="contact" class="py-24 px-6 relative">
         <div class="max-w-4xl mx-auto text-center reveal">
             <h2 class="text-3xl sm:text-4xl font-bold mb-4">Let's Connect</h2>
             <p class="text-slate-400 mb-10 max-w-lg mx-auto">Have an exciting project idea, collaboration, or opportunity? Feel free to reach out!</p>
